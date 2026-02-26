@@ -1,19 +1,30 @@
-import React from 'react'
-import './styles.css'
+import type { Metadata, Viewport } from 'next'
+import { Geist } from 'next/font/google'
+import './globals.css'
 
-export const metadata = {
-  description: 'A blank template using Payload in a Next.js app.',
-  title: 'Payload Blank Template',
+const geist = Geist({
+  subsets: ['latin'],
+  variable: '--font-geist',
+})
+
+export const metadata: Metadata = {
+  title: 'Anti-Raids Network',
+  description:
+    'A loose network of groups and individuals working to build the resistance to immigration raids across the UK.',
 }
 
-export default async function RootLayout(props: { children: React.ReactNode }) {
-  const { children } = props
+export const viewport: Viewport = {
+  themeColor: '#f9f8f6',
+}
 
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode
+}>) {
   return (
-    <html lang="en">
-      <body>
-        <main>{children}</main>
-      </body>
+    <html lang="en" className={geist.variable}>
+      <body className="font-sans antialiased">{children}</body>
     </html>
   )
 }
